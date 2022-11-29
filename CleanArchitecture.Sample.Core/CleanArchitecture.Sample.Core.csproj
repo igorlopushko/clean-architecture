@@ -9,8 +9,4 @@
       <Folder Include="Common\Helpers" />
     </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.15" />
-    </ItemGroup>
-
 </Project>

@@ -1,5 +1,4 @@
-using CleanArchitecture.Sample.Core;
-using CleanArchitecture.Sample.Core.Interfaces;
+using CleanArchitecture.Sample.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Sample.Infrastructure.Persistence

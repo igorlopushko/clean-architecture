@@ -1,9 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
+using CleanArchitecture.Sample.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace CleanArchitecture.Sample.Core.Interfaces
+namespace CleanArchitecture.Sample.Infrastructure.Persistence
 {
     public interface IApplicationDbContext
     {

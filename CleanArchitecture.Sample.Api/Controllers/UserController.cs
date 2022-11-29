@@ -42,7 +42,7 @@ namespace CleanArchitecture.Sample.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Models.UserModel userModel, CancellationToken token)
         {
-            var userEntity = new Core.User()
+            var userEntity = new Core.Entities.User
             {
                 Email = userModel.Email,
                 FirstName = userModel.FirstName,
@@ -57,7 +57,7 @@ namespace CleanArchitecture.Sample.Api.Controllers
         [HttpPut]
         public IActionResult Update([FromBody] Models.UserModel userModel, CancellationToken token)
         {
-            var userEntity = new Core.User()
+            var userEntity = new Core.Entities.User
             {
                 Id = userModel.Id,
                 Email = userModel.Email,

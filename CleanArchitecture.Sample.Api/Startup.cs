@@ -32,6 +32,7 @@ namespace CleanArchitecture.Sample.Api
             services.AddSingleton(Configuration.GetSection(PostgresSettings.SectionName).Get<PostgresSettings>());
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
             
             // register application DB context
             services.AddApplicationDbContext(Configuration);

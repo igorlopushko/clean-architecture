@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CleanArchitecture.Sample.Core
-
+namespace CleanArchitecture.Sample.Core.Entities
 {
     public class User
     {

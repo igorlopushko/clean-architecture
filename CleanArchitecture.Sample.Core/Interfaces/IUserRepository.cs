@@ -5,7 +5,7 @@ using CleanArchitecture.Sample.Core.Entities;
 
 namespace CleanArchitecture.Sample.Core.Interfaces
 {
-    public interface IUserService
+    public interface IUserRepository
     {
         Task CreateAsync(User user, CancellationToken token);
         Task<User> GetAsync(int id);

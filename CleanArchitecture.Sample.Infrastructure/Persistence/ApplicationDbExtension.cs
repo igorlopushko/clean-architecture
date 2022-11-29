@@ -1,4 +1,3 @@
-using CleanArchitecture.Sample.Core.Interfaces;
 using CleanArchitecture.Sample.Infrastructure.Persistence.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
