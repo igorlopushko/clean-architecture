@@ -7,10 +7,10 @@ namespace CleanArchitecture.Sample.Core.Interfaces
 {
     public interface IUserService
     {
-        Task CreateAsync(User user, CancellationToken token);
-        Task<User> GetAsync(int id);
-        IEnumerable<User> GetAllAsync();
-        public Task DeleteAsync(int id, CancellationToken token);
-        public Task UpdateAsync(User user, CancellationToken token);
+        Task CreateUserAsync(User user, CancellationToken token);
+        Task<User> GetUserAsync(int id);
+        IEnumerable<User> GetAllUsersAsync();
+        public Task DeleteUserAsync(int id, CancellationToken token);
+        public Task UpdateUserAsync(User user, CancellationToken token);
     }
 }

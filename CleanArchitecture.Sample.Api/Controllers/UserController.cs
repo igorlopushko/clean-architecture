@@ -20,7 +20,7 @@ namespace CleanArchitecture.Sample.Api.Controllers
         [Route("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var user = await _userService.GetAsync(id);
+            var user = await _userService.GetUserAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -31,7 +31,7 @@ namespace CleanArchitecture.Sample.Api.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var users = _userService.GetAllAsync();
+            var users = _userService.GetAllUsersAsync();
             if (!users.Any())
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace CleanArchitecture.Sample.Api.Controllers
                 LastName = userModel.LastName
             };
             
-            await _userService.CreateAsync(userEntity, token);
+            await _userService.CreateUserAsync(userEntity, token);
             
             return Ok();
         }
@@ -65,7 +65,7 @@ namespace CleanArchitecture.Sample.Api.Controllers
                 LastName = userModel.LastName
             };
             
-            _userService.UpdateAsync(userEntity, token);
+            _userService.UpdateUserAsync(userEntity, token);
             
             return Ok();
         }
@@ -74,7 +74,7 @@ namespace CleanArchitecture.Sample.Api.Controllers
         [Route("{id}")]
         public IActionResult Delete(int id, CancellationToken token)
         {
-            _userService.DeleteAsync(id, token);
+            _userService.DeleteUserAsync(id, token);
             return Ok();
         }
     }
