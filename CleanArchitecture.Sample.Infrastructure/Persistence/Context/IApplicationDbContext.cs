@@ -1,14 +1,14 @@
 using System.Threading;
 using System.Threading.Tasks;
-using CleanArchitecture.Sample.Core.Entities;
+using CleanArchitecture.Sample.Infrastructure.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace CleanArchitecture.Sample.Infrastructure.Persistence
+namespace CleanArchitecture.Sample.Infrastructure.Persistence.Context
 {
     public interface IApplicationDbContext
     {
-        DbSet<User> Users { get; set; }
+        DbSet<UserModel> Users { get; set; }
         
         DatabaseFacade Database { get; }
 

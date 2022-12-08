@@ -1,7 +1,10 @@
+using CleanArchitecture.Sample.Api.Mapping;
 using CleanArchitecture.Sample.Core.Interfaces;
 using CleanArchitecture.Sample.Core.Services;
 using CleanArchitecture.Sample.Infrastructure.Persistence;
 using CleanArchitecture.Sample.Infrastructure.Persistence.Config;
+using CleanArchitecture.Sample.Infrastructure.Persistence.Mapping;
+using CleanArchitecture.Sample.Infrastructure.Persistence.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -36,6 +39,9 @@ namespace CleanArchitecture.Sample.Api
             
             // register application DB context
             services.AddApplicationDbContext(Configuration);
+            
+            // register automapper profiles
+            services.AddAutoMapper(typeof(ApiMappingProfile), typeof(DbMappingProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

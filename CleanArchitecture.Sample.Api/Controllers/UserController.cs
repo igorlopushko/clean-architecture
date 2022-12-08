@@ -1,6 +1,10 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
+using CleanArchitecture.Sample.Api.Models;
+using CleanArchitecture.Sample.Core.Entities;
 using CleanArchitecture.Sample.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +13,12 @@ namespace CleanArchitecture.Sample.Api.Controllers
     [Route("/api/users")]
     public class UserController : Controller
     {
+        private readonly IMapper _mapper;
         private readonly IUserService _userService;
         
-        public UserController(IUserService userService)
+        public UserController(IMapper mapper, IUserService userService)
         {
+            _mapper = mapper;
             _userService = userService;
         }
 
@@ -25,7 +31,7 @@ namespace CleanArchitecture.Sample.Api.Controllers
             {
                 return NotFound();
             }
-            return Ok(user);
+            return Ok(_mapper.Map<UserModel>(user));
         }
         
         [HttpGet]
@@ -36,18 +42,15 @@ namespace CleanArchitecture.Sample.Api.Controllers
             {
                 return NotFound();
             }
-            return Ok(users);
+            return Ok(_mapper.Map<IEnumerable<UserModel>>(users));
         }
         
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Models.UserModel userModel, CancellationToken token)
+        public async Task<IActionResult> Create(
+            [FromBody] UserModel userModel,
+            CancellationToken token)
         {
-            var userEntity = new Core.Entities.User
-            {
-                Email = userModel.Email,
-                FirstName = userModel.FirstName,
-                LastName = userModel.LastName
-            };
+            var userEntity = _mapper.Map<User>(userModel);
             
             await _userService.CreateUserAsync(userEntity, token);
             
@@ -55,15 +58,11 @@ namespace CleanArchitecture.Sample.Api.Controllers
         }
         
         [HttpPut]
-        public IActionResult Update([FromBody] Models.UserModel userModel, CancellationToken token)
+        public IActionResult Update(
+            [FromBody] UserModel userModel,
+            CancellationToken token)
         {
-            var userEntity = new Core.Entities.User
-            {
-                Id = userModel.Id,
-                Email = userModel.Email,
-                FirstName = userModel.FirstName,
-                LastName = userModel.LastName
-            };
+            var userEntity = _mapper.Map<User>(userModel);
             
             _userService.UpdateUserAsync(userEntity, token);
             

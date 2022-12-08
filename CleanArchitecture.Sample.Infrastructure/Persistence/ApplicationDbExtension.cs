@@ -1,4 +1,5 @@
 using CleanArchitecture.Sample.Infrastructure.Persistence.Config;
+using CleanArchitecture.Sample.Infrastructure.Persistence.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
